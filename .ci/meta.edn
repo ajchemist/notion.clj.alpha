@@ -1,0 +1,4 @@
+{
+ :template      "ajchemist.templates/package"
+ :template/meta #:git{:sha "b473fb613cd3d473713fef6c85fb4551e04c0235", :url "https://github.com/ajchemist/clojure-templates.git"}
+ }
