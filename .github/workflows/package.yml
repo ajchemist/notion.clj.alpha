@@ -22,7 +22,7 @@ on:
 env:
   java-version: '19'
   clojure-cli: latest
-  library: io.github.ajchemist/notion
+  library: io.github.ajchemist/notion.clj.alpha
 
 
 jobs:
