@@ -17,6 +17,11 @@
     (user.ring/wrap-meta-response)
     (user.ring/wrap-transform-request
       (fn [params]
+        (cond-> params
+          (map? (:query-params params)) (assoc-in [::saved-params :query-params] (:query-params params))
+          (map? (:form-params params)) (assoc-in [::saved-params :form-params] (:form-params params)))))
+    (user.ring/wrap-transform-request
+      (fn [params]
         (-> params
           (update :content-type
             #(or % :json))

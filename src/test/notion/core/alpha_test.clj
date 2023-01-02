@@ -24,4 +24,18 @@
               "4d70fcd9dbe84051a7e33749374524d6"
               {:filter {:property  "id"
                         :rich_text {:equals "z01"}}})
-          (get "results")))))
+          (get "results"))))
+
+
+  (is (= (get-in
+           (meta
+             (notion/query-database
+               {:notion/token  NOTION_TOKEN
+                :save-request? true}
+               "4d70fcd9dbe84051a7e33749374524d6"
+               {:filter {:property  "id"
+                         :rich_text {:equals "a01"}}}))
+           [:request ::notion/saved-params :form-params])
+         {:filter {:property  "id"
+                   :rich_text {:equals "a01"}}})
+      "Capturing query-params & form-params in request"))
