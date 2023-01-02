@@ -58,6 +58,7 @@ jobs:
 
       - name: Test runner
         env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           TESTOPT: "-X:provided:test:test-runner"
         run: |
           clojure $TESTOPT
