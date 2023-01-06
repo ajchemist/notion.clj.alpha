@@ -94,6 +94,16 @@
        :as     :json-string-keys})))
 
 
+(defn retrieve-page-property
+  [params page-id property-id]
+  (client
+    (merge
+      params
+      {:url    (str +origin+ "/v1/pages/" page-id "/properties/" property-id)
+       :method :get
+       :as     :json-string-keys})))
+
+
 (defn create-page
   [params parent properties & {:keys [children icon cover]}]
   (client
