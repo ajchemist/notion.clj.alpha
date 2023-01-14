@@ -2,6 +2,9 @@
   (:require
    [clj-http.client :as http]
    [user.ring.alpha :as user.ring]
+   )
+  (:import
+   java.time.Instant
    ))
 
 
@@ -58,6 +61,41 @@
       ([acc] (rf acc))
       ([acc {:strs [results] :as response}]
        (rf acc results)))))
+
+
+(defn xf-take-while-since-updated
+  [^Instant since]
+  (fn [rf]
+    (fn
+      ([] (rf))
+      ([acc] (rf acc))
+      ([acc response]
+       (let [response' (update response "results"
+                         #(take-while
+                            (fn [{:strs [last_edited_time]}]
+                              (.isBefore since (Instant/parse last_edited_time)))
+                            %))
+             acc'      (rf acc response')]
+         (prn (count (get response' "results")) (count (get response "results")))
+         (if (< (count (get response' "results")) (count (get response "results")))
+           (ensure-reduced acc')
+           acc'))))))
+
+
+(defn xf-since-updated
+  [^Instant since]
+  (fn [rf]
+    (fn
+      ([] (rf))
+      ([result] (rf result))
+      ([result {:strs [results] :as response}]
+       (let [result (rf result response)]
+         (if (some
+               (fn [{:strs [last_edited_time]}]
+                 (.isAfter since (Instant/parse last_edited_time)))
+               results)
+           (ensure-reduced result)
+           result))))))
 
 
 ;; * Database
