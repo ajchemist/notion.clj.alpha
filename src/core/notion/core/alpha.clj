@@ -36,6 +36,30 @@
             (update-in [:headers "Notion-Version"] #(or % (:notion/version params "2022-06-28")))))))))
 
 
+;; * xform
+
+
+(def xf-has-more
+  (fn [rf]
+    (fn
+      ([] (rf))
+      ([result] (rf result))
+      ([result {:strs [has_more] :as response}]
+       (let [result (rf result response)]
+         (if has_more
+           result
+           (ensure-reduced result)))))))
+
+
+(def xf-results
+  (fn [rf]
+    (fn
+      ([] (rf))
+      ([acc] (rf acc))
+      ([acc {:strs [results] :as response}]
+       (rf acc results)))))
+
+
 ;; * Database
 
 
