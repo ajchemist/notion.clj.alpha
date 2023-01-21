@@ -76,7 +76,6 @@
                               (.isBefore since (Instant/parse last_edited_time)))
                             %))
              acc'      (rf acc response')]
-         (prn (count (get response' "results")) (count (get response "results")))
          (if (< (count (get response' "results")) (count (get response "results")))
            (ensure-reduced acc')
            acc'))))))
