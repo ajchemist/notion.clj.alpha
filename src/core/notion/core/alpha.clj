@@ -97,6 +97,39 @@
            result))))))
 
 
+;; * Users
+
+
+(defn list-users
+  [params]
+  (client
+    (merge
+      params
+      {:url    (str +origin+ "/v1/users")
+       :method :get
+       :as     :json-string-keys})))
+
+
+(defn retrieve-user
+  [params user-id]
+  (client
+    (merge
+      params
+      {:url    (str +origin+ "/v1/users/" user-id)
+       :method :get
+       :as     :json-string-keys})))
+
+
+(defn retrieve-bot-user
+  [params]
+  (client
+    (merge
+      params
+      {:url    (str +origin+ "/v1/users/me")
+       :method :get
+       :as     :json-string-keys})))
+
+
 ;; * Database
 
 
