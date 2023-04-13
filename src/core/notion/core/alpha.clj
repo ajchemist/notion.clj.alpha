@@ -228,7 +228,17 @@
 ;; * Block
 
 
-(defn retreive-children
+(defn retrieve-block
+  [params block-id]
+  (client
+    (merge
+      params
+      {:url    (str +origin+ "/v1/blocks/" block-id)
+       :method :get
+       :as     :json-string-keys})))
+
+
+(defn retrieve-children
   [params block-id]
   (client
     (merge
@@ -236,6 +246,17 @@
       {:url    (str +origin+ "/v1/blocks/" block-id "/children")
        :method :get
        :as     :json-string-keys})))
+
+
+(defn append-children
+  [params block-id children]
+  (client
+    (merge
+      params
+      {:url         (str +origin+ "/v1/blocks/" block-id "/children")
+       :method      :patch
+       :as          :json-string-keys
+       :form-params {:children children}})))
 
 
 (set! *warn-on-reflection* false)
