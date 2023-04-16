@@ -4,13 +4,13 @@
   <packaging>jar</packaging>
   <groupId>io.github.ajchemist</groupId>
   <artifactId>notion.clj.alpha</artifactId>
-  <version>2023.106.20709</version>
+  <version>2023.106.21598</version>
   <name>notion.clj.alpha</name>
   <dependencies>
     <dependency>
       <groupId>selmer</groupId>
       <artifactId>selmer</artifactId>
-      <version>1.12.55</version>
+      <version>1.12.58</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
@@ -45,12 +45,12 @@
     <dependency>
       <groupId>io.github.ajchemist</groupId>
       <artifactId>user.ring</artifactId>
-      <version>2022.298.6339</version>
+      <version>2023.24.45476</version>
     </dependency>
     <dependency>
       <groupId>ring</groupId>
       <artifactId>ring-core</artifactId>
-      <version>1.9.6</version>
+      <version>1.10.0</version>
     </dependency>
   </dependencies>
   <build>
