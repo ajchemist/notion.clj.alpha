@@ -18,7 +18,7 @@ on:
 
 
 env:
-  clj-kondo-version: '2022.12.10'
+  clj-kondo-version: '2023.04.14'
 
 
 jobs:

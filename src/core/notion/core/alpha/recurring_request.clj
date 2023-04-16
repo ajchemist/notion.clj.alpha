@@ -8,7 +8,7 @@
 (def ^:dynamic ^:private *notion-token*)
 
 
-(defn recurring-query-database
+(defn query-database
   [http-params database-id form-params callback]
   (t/recurring-request
     (fn [params]
@@ -25,7 +25,7 @@
     callback))
 
 
-(defn recurring-retrieve-page-property
+(defn retrieve-page-property
   [http-params page-id property-id query-params callback]
   (t/recurring-request
     (fn [params]
