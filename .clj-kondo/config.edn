@@ -15,6 +15,10 @@
              }}
 
 
+  :unused-private-var
+  {:exclude ["notion\\.core\\.alpha\\..*"]}
+
+
   :unresolved-namespace
   {:exclude []}
 

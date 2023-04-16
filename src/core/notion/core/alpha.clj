@@ -189,13 +189,14 @@
 
 
 (defn retrieve-page-property
-  [params page-id property-id]
+  [params page-id property-id query-params]
   (client
-    (merge
-      params
-      {:url    (str +origin+ "/v1/pages/" page-id "/properties/" property-id)
-       :method :get
-       :as     :json-string-keys})))
+    (-> params
+      (merge
+        {:url          (str +origin+ "/v1/pages/" page-id "/properties/" property-id)
+         :method       :get
+         :as           :json-string-keys})
+      (assoc :query-params query-params))))
 
 
 (defn create-page

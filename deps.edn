@@ -6,6 +6,7 @@
   buddy/buddy-sign              {:mvn/version "3.4.333"}
   cheshire/cheshire             {:mvn/version "5.11.0"}
   clj-http/clj-http             {:mvn/version "3.12.3"}
+  io.github.ajchemist/clj-http  {:mvn/version "2023.98.28971"}
   io.github.ajchemist/user.ring {:mvn/version "2022.298.6339"}
   org.clojure/data.json         {:mvn/version "2.4.0"}
   ring/ring-core                {:mvn/version "1.9.6"}
